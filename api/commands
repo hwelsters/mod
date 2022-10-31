@@ -1,0 +1,2 @@
+docker build -t api_c .
+docker run -p 4000:4000 api_c

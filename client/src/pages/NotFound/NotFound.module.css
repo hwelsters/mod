@@ -1,0 +1,24 @@
+.root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+    font-size: 2rem;
+    font-weight: bolder;
+    min-height: calc(80vh - var(--navbar-height))
+}
+
+.home,
+.text {
+    font-size: 1.5rem;
+}
+
+.home {
+    font-size: 2rem;
+    transition: all 500ms;
+}
+
+.home:hover {
+    transform: scale(1.25);
+}

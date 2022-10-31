@@ -1,0 +1,31 @@
+.root {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--fg-s-color);
+  outline: none;
+
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0.1rem;
+
+  padding: 1rem;
+  height: 1.75rem;
+  color: var(--font-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+
+  transition: all 250ms;
+}
+
+.input:focus {
+  border-color: var(--tint-color);
+}
