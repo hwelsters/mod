@@ -10,4 +10,7 @@ router.post("/register", authController.register_post);
 // LOGIN
 router.post("/login", authController.login_post);
 
+// VERIFY EMAIL
+router.post("/verifyEmail", authController.verifyEmail_post);
+
 export default router;

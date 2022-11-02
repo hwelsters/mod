@@ -5,7 +5,7 @@ const INITIAL_STATE = {
   user: localStorage.getItem("user") || null,
   signIn: async (email: string, password: string) => {},
   register: (username: string, email: string, password: string) => {},
-  logout: () => {}
+  logout: () => {},
 };
 
 // WILL CHANGE THIS LATER
@@ -27,26 +27,40 @@ function useAuthProvider() {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
-  const register = async (username: string, email: string, password: string) => {
-    await apiPost("register", {username: username, email: email, password: password});
+  const register = async (
+    username: string,
+    email: string,
+    password: string
+  ) => {
+    await apiPost("register", {
+      username: username,
+      email: email,
+      password: password,
+    });
   };
 
   const signIn = async (email: string, password: string) => {
     setUser(await apiPost("/login", { email, password }));
   };
 
+  const authenticateEmail = async (email: string, otp: string) => {
+    return true;
+    await apiPost("/verifyEmail", { email, otp });
+  };
+
   const logout = () => {
     setUser(null);
   };
 
-  const emailAlreadyExists = (email : string) => {
+  const emailAlreadyExists = (email: string) => {
     return true;
-  }
+  };
 
   return {
     user,
     signIn,
     register,
     logout,
+    authenticateEmail
   };
 }

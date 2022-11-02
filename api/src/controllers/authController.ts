@@ -9,6 +9,7 @@ import validateEmail from "utils/validateEmail";
 import { sendMail } from "services/nodemailer";
 import { registerText } from "data/authText";
 
+// SEND VERIFICATION EMAIL
 const sendVerificationEmail = (email: string, verificationCode: string) => {
   sendMail(
     email,
@@ -18,10 +19,7 @@ const sendVerificationEmail = (email: string, verificationCode: string) => {
   );
 };
 
-module.exports.verifyEmail_post = (req : Request, res: Response) => {
-  
-}
-
+// REGISTER
 module.exports.register_post = (req: Request, res: Response) => {
   // Ensure email and password are valid
   if (!validateEmail(req.body.email))
@@ -48,6 +46,7 @@ module.exports.register_post = (req: Request, res: Response) => {
   });
 };
 
+// LOGIN
 module.exports.login_post = (req: Request, res: Response) => {
   const q = "SELECT * FROM Users WHERE email = ?";
   db.query(q, [req.body.email], (err: any, data: any) => {
@@ -75,3 +74,7 @@ module.exports.login_post = (req: Request, res: Response) => {
       .json(other);
   });
 };
+
+module.exports.verifyEmail_post = (req : Request, res: Response) => {
+  
+}

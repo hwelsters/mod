@@ -8,9 +8,11 @@ import { isNumber } from "utils/isNumber";
 export default function NumberInput({
   length,
   setValue,
+  disabled,
 }: {
   length: number;
   setValue?: any;
+  disabled?: boolean;
 }) {
   const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -21,7 +23,7 @@ export default function NumberInput({
     const newOtp: string[] = [...otp];
     newOtp[index] = value.substring(value.length - 1);
     setOtp(newOtp);
-    setValue(newOtp.join(''));
+    setValue(newOtp.join(""));
   };
 
   const changeActiveIndex = (index: number) => {
@@ -64,6 +66,7 @@ export default function NumberInput({
           type="number"
           value={otp[index]}
           onKeyDown={(e) => handleKeyDown(e, index)}
+          disabled={disabled}
         />
       ))}
     </span>

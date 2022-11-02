@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from "components/Button/Button";
 import PasswordInput from "components/PasswordInput/PasswordInput";
@@ -36,7 +36,7 @@ export default function PasswordRegister({
 
   useEffect(() => setIsValidPassword(validatePassword(password)), [password]);
   return (
-    <>
+    <React.Fragment>
       <PasswordInput label="Password 🤫 " onChange={(event : any) => setPassword(event.target.value)} />
       <PasswordInput label="Confirm Password" onChange={(event : any) => setConfirmPassword(event.target.value)} />
 
@@ -61,6 +61,6 @@ export default function PasswordRegister({
           disabled={!(matching && isValidPassword)}
         />
       </span>
-    </>
+    </React.Fragment>
   );
 }

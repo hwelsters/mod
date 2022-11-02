@@ -1,6 +1,6 @@
 import Button from "components/Button/Button";
 import Input from "components/Input/Input";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./UsernameRegister.module.css";
 
@@ -19,7 +19,7 @@ export default function UsernameRegister({
 
   useEffect(() => setIsValidUsername(validateUsername(username)), [username]);
   return (
-    <>
+    <React.Fragment>
       <Input
         label="Username 👋"
         onChange={(event: any) => setUsername(event.target.value)}
@@ -35,6 +35,6 @@ export default function UsernameRegister({
         </span>
         <Button text="Next" onClick={() => isValidUsername && setStep((step: any) => step + 1)} disabled={!isValidUsername}/>
       </span>
-    </>
+    </React.Fragment>
   );
 }

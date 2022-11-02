@@ -6,20 +6,20 @@ import Footer from "layouts/Footer";
 import Logo from "layouts/Logo/Logo";
 
 import styles from "./Register.module.css";
-import Input from "components/Input/Input";
-import PasswordInput from "components/PasswordInput/PasswordInput";
 import EmailRegister from "./components/EmailRegister/EmailRegister";
 import PasswordRegister from "./components/PasswordRegister/PasswordRegister";
 import UsernameRegister from "./components/UsernameRegister/UsernameRegister";
-import CompletionRegister from "./components/CompletionRegister/CompletionRegister";
+import VerifyRegister from "./components/VerifyRegister/VerifyRegister";
+import CongratulationsRegister from "./components/CongratulationsRegister/CongratulationsRegister";
 
 export default function Register() {
   const EMAIL = 0;
   const USERNAME = 1;
   const PASSWORD = 2;
-  const COMPLETED = 3;
+  const VERIFY = 3;
+  const MAX_PAGE = 4;
 
-  const [step, setStep] = useState<number>(3);
+  const [step, setStep] = useState<number>(0);
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -46,8 +46,10 @@ export default function Register() {
             setPassword={setPassword}
           />
         );
-      case COMPLETED:
-        return <CompletionRegister />;
+      case VERIFY:
+        return <VerifyRegister setStep={setStep} email={email}/>;
+      case MAX_PAGE:
+        return <CongratulationsRegister/>
     }
   };
 
@@ -60,12 +62,12 @@ export default function Register() {
             <Logo />
           </span>
           <span className={styles.step_count}>
-            Step {Math.min(step + 1, 3)} of 3
+            Step {Math.min(step + 1, MAX_PAGE)} of {MAX_PAGE}
           </span>
           <span className={styles.progress_div}>
             <div
               className={styles.progress_bar}
-              style={{ width: `${step * 33.3}%` }}
+              style={{ width: `${step * (100 / MAX_PAGE)}%` }}
             />
           </span>
 
