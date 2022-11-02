@@ -4,10 +4,11 @@ import jwt from "jsonwebtoken";
 
 import db from "../services/database";
 
-import validatePassword from "utils/validatePassword";
-import validateEmail from "utils/validateEmail";
-import { sendMail } from "services/nodemailer";
-import { registerText } from "data/authText";
+import validatePassword from "../utils/validatePassword";
+import validateEmail from "../utils/validateEmail";
+import { sendMail } from "../services/nodemailer";
+import { registerText } from "../data/authText";
+import generateRandomCode from "../utils/generateRandomCode";
 
 // SEND VERIFICATION EMAIL
 const sendVerificationEmail = (email: string, verificationCode: string) => {
@@ -36,11 +37,17 @@ module.exports.register_post = (req: Request, res: Response) => {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
 
-    const q = "INSERT INTO Users(`username`,`email`,`password`) VALUES (?)";
-    const values = [req.body.username, req.body.email, hash];
-
+    const q =
+      "INSERT INTO Users(`username`,`email`,`password`, `verified`) VALUES (?)";
+    const values = [req.body.username, req.body.email, hash, false];
     db.query(q, [values], (err: any, data: any) => {
       if (err) return res.status(500).json(err);
+
+      const q = "INSERT INTO Otp(`email`,`verificationCode`) VALUES(?)";
+      const verificationCode = generateRandomCode(5);
+      const values = [req.body.email, verificationCode];
+      sendVerificationEmail(req.body.email, verificationCode);
+      db.query(q, [values]);
       return res.status(200).json("User has been created.");
     });
   });
@@ -75,6 +82,18 @@ module.exports.login_post = (req: Request, res: Response) => {
   });
 };
 
-module.exports.verifyEmail_post = (req : Request, res: Response) => {
-  
-}
+module.exports.verifyEmail_post = (req: Request, res: Response) => {
+  const q1 = "SELECT * FROM Otp WHERE email = ?";
+  db.query(q1, [req.body.email], (err1: any, data1: any) => {
+    if (err1) return res.status(500).json(err1);
+    if (req.body.verificationCode === data1[0].verificationCode) {
+      const q2 = "UPDATE Users SET verified = TRUE WHERE email = ?";
+      db.query(q2, [req.body.email], (err2: any, _: any) => {
+        if (err2) return res.status(500).json(err2);
+        if (data1[0].verificationCode === req.body.verificationCode) {
+          return res.status(200).json("Email verified");
+        } else return res.status(500).json("Email not verified");
+      });
+    } else return res.status(500).json("WRONK");
+  });
+};

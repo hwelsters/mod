@@ -10,8 +10,15 @@ import NotFound from "pages/NotFound/NotFound";
 import Login from "pages/Login/Login";
 import Register from "pages/Register/Register";
 
+// TEST
+import { apiGet } from "services/api";
+
 function App() {
-  console.log("FRONTEND IS LIVE 👍");
+  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+  async function test() {await console.log(await apiGet(""))};
+  test();
+  // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
+
   return (
     <AuthProvider>
       <BrowserRouter>

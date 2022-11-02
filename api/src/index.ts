@@ -15,7 +15,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use("/auth", authRoute);
+app.use("/api/auth", authRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.status(200).json("TEST:: BASE URL");

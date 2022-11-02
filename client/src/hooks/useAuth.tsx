@@ -32,7 +32,8 @@ function useAuthProvider() {
     email: string,
     password: string
   ) => {
-    await apiPost("register", {
+    console.log("REGISTER");
+    await apiPost("api/auth/register", {
       username: username,
       email: email,
       password: password,
@@ -40,15 +41,17 @@ function useAuthProvider() {
   };
 
   const signIn = async (email: string, password: string) => {
-    setUser(await apiPost("/login", { email, password }));
+    console.log("SIGN IN");
+    setUser(await apiPost("api/auth/login", { email, password }));
   };
 
   const authenticateEmail = async (email: string, otp: string) => {
-    return true;
-    await apiPost("/verifyEmail", { email, otp });
+    console.log("AUTHENTICATE");
+    return await apiPost("api/auth/verifyEmail", { email, otp });
   };
 
   const logout = () => {
+    console.log("LOG OUT");
     setUser(null);
   };
 

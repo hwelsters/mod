@@ -1,13 +1,22 @@
 const mysql = require("mysql");
 
+// USER TABLE
 const createUserTable = `
 CREATE TABLE IF NOT EXISTS Users(
   id INT PRIMARY KEY AUTO_INCREMENT, 
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE, 
   password VARCHAR(255) NOT NULL,
-  verificationCode VARCHAR(255) NOT NULL,
   verified BOOLEAN
+)
+`;
+
+// OTP TABLE
+const createOtpTable = `
+CREATE TABLE IF NOT EXISTS Otp(
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  verificationCode VARCHAR(255) NOT NULL
 )
 `;
 
@@ -22,6 +31,7 @@ const db = mysql.createConnection({
 // Initialize tables
 try {
   db.query(createUserTable);
+  db.query(createOtpTable);
 } catch (err) {}
 
 export default db;

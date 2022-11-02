@@ -12,7 +12,11 @@ import UsernameRegister from "./components/UsernameRegister/UsernameRegister";
 import VerifyRegister from "./components/VerifyRegister/VerifyRegister";
 import CongratulationsRegister from "./components/CongratulationsRegister/CongratulationsRegister";
 
+import { useAuth } from "hooks/useAuth";
+
 export default function Register() {
+  const auth = useAuth();
+
   const EMAIL = 0;
   const USERNAME = 1;
   const PASSWORD = 2;
@@ -47,6 +51,7 @@ export default function Register() {
           />
         );
       case VERIFY:
+        console.log(auth.register(username, email, password));
         return <VerifyRegister setStep={setStep} email={email}/>;
       case MAX_PAGE:
         return <CongratulationsRegister/>
