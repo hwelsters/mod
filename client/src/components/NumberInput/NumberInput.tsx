@@ -61,6 +61,7 @@ export default function NumberInput({
     <span className={styles.root}>
       {otp.map((_, index) => (
         <input
+          key={index}
           className={styles.input}
           ref={activeIndex === index ? inputRef : null}
           type="number"
