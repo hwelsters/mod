@@ -8,7 +8,7 @@ export const registerText = {
   subject: (code: string) => {
     return `Split verification code: ${code}`;
   },
-  body: "Thank you for signing up!",
+  body: (code: string) => {return `Thank you for signing up!\nYour verification code is: ${code}`},
   htmlBody: (code: string) => {
     return `
   ${styleLinks}

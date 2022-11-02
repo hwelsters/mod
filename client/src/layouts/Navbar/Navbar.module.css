@@ -36,10 +36,13 @@
   font-size: medium;
   font-weight: bolder;
 
+  transition: all 250ms;
+
   cursor: pointer;
 }
 
 .login:hover {
+  transform: scale(1.05);
   color: var(--tint-color);
 }
 

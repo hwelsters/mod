@@ -1,13 +1,15 @@
+import Input from "components/Input/Input";
+import NumberInput from "components/NumberInput/NumberInput";
+import { useState } from "react";
 import styles from "./CompletionRegister.module.css";
 export default function CompletionRegister() {
 
-  setInterval(()=>{
-    window.location.href="/login";
-  }, 500)
+  const [otp, setOtp] = useState<string>("");
+  console.log(otp);
   return (
     <>
-      <span className={styles.text}>Please verify your account!</span>
-      <span className={styles.text}>🎉</span>
+      <span className={styles.text}>Please enter the verification code sent to your email ✉️</span>
+      <NumberInput length={5} setValue={setOtp}/>
     </>
   );
 }

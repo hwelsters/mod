@@ -19,7 +19,7 @@ export default function Register() {
   const PASSWORD = 2;
   const COMPLETED = 3;
 
-  const [step, setStep] = useState<number>(0);
+  const [step, setStep] = useState<number>(3);
   const [email, setEmail] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -27,11 +27,25 @@ export default function Register() {
   const showStep = () => {
     switch (step) {
       case EMAIL:
-        return <EmailRegister setStep={setStep} email={email} setEmail={setEmail}/>;
+        return (
+          <EmailRegister setStep={setStep} email={email} setEmail={setEmail} />
+        );
       case USERNAME:
-        return <UsernameRegister setStep={setStep} username={username} setUsername={setUsername}/>;
+        return (
+          <UsernameRegister
+            setStep={setStep}
+            username={username}
+            setUsername={setUsername}
+          />
+        );
       case PASSWORD:
-        return <PasswordRegister setStep={setStep} password={password} setPassword={setPassword}/>;
+        return (
+          <PasswordRegister
+            setStep={setStep}
+            password={password}
+            setPassword={setPassword}
+          />
+        );
       case COMPLETED:
         return <CompletionRegister />;
     }

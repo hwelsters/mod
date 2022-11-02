@@ -23,7 +23,7 @@ body {
   --tint-font-color: var(--black);
 
   --navbar-height: 3rem;
-  --border-radius: 0.75rem;
+  --border-radius: 0.2rem;
 
   background-color: var(--bg-color);
   color: var(--font-color);
@@ -37,4 +37,15 @@ a {
 
 * {
   font-family: "Outfit", sans-serif;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }

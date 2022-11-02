@@ -21,7 +21,7 @@ export default function EmailRegister({
   return (
     <>
       <Input
-        label="Email"
+        label="Email ✉️"
         onChange={(event: any) => setEmail(event.target.value)}
         value={email}
       />

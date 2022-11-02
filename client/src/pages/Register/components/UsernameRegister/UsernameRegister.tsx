@@ -21,7 +21,7 @@ export default function UsernameRegister({
   return (
     <>
       <Input
-        label="Username"
+        label="Username 👋"
         onChange={(event: any) => setUsername(event.target.value)}
         value={username}
       />

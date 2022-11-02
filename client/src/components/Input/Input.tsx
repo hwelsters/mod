@@ -10,8 +10,8 @@ type InputParams = {
 export default function Input({ label, onChange, type, value }: InputParams) {
   return (
     <span className={styles.root}>
-      <label className={styles.label}>{label}</label>
-      <input className={styles.input} type={type} onChange={onChange} value={value}/>
+      <label className={styles.label} htmlFor={label}>{label}</label>
+      <input className={styles.input} name={label} type={type} onChange={onChange} value={value}/>
     </span>
   );
 }
