@@ -15,7 +15,7 @@ import { apiGet } from "services/api";
 
 function App() {
   // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
-  async function test() {await console.log(await apiGet(""))};
+  async function test() {await console.log(await apiGet("api"))};
   test();
   // TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST
 

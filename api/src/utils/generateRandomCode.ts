@@ -1,7 +1,7 @@
-const {randomInt} = require("node:crypto");
+const { randomInt } = require("node:crypto");
 
 const generateRandomCode = (length: number) => {
-    return randomInt(1000_000).toString().padStart(6, '0');
+  return randomInt(Math.pow(10, length) - 1).toString().padStart(length, "0");
 };
 
 export default generateRandomCode;

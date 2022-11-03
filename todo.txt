@@ -1,3 +1,3 @@
-1. Create email already exists functionality
+1. Fix number input UX
 2. Maybe I should save all the files to create-hwelsters-app? This will be the new base
 2. Create front page

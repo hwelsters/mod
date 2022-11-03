@@ -9,10 +9,10 @@
 }
 
 .input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-justify: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-justify: center;
   margin-top: 1rem;
   margin-bottom: 1rem;
   background-color: var(--fg-s-color);
@@ -34,4 +34,8 @@
 
 .input:focus {
   border-color: var(--tint-color);
+}
+
+.input:disabled {
+  filter: brightness(0.5);
 }

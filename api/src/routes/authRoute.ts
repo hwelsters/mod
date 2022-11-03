@@ -13,4 +13,7 @@ router.post("/login", authController.login_post);
 // VERIFY EMAIL
 router.post("/verifyEmail", authController.verifyEmail_post);
 
+// EMAIL ALREADY EXISTS
+router.post("/emailExists", authController.emailAlreadyExists_post);
+
 export default router;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import PageContainer from "layouts/PageContainer/PageContainer";
 import Navbar from "layouts/Navbar/Navbar";
@@ -51,18 +51,21 @@ export default function Register() {
           />
         );
       case VERIFY:
-        console.log(auth.register(username, email, password));
-        return <VerifyRegister setStep={setStep} email={email}/>;
+        return <VerifyRegister setStep={setStep} email={email} />;
       case MAX_PAGE:
-        return <CongratulationsRegister/>
+        return <CongratulationsRegister />;
     }
   };
+
+  useEffect(() => {
+    if (step === VERIFY) auth.register(username, email, password);
+  }, [step]);
 
   return (
     <PageContainer>
       <Navbar />
       <div className={styles.root}>
-        <form className={styles.block}>
+        <form className={styles.block} onSubmit={(e) => e.preventDefault()}>
           <span className={styles.logo}>
             <Logo />
           </span>

@@ -17,7 +17,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
 
-app.get("/", (req: Request, res: Response) => {
+app.get("/api", (req: Request, res: Response) => {
   res.status(200).json("TEST:: BASE URL");
 });
 

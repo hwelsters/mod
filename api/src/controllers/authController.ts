@@ -31,7 +31,7 @@ module.exports.register_post = (req: Request, res: Response) => {
   const q = "SELECT * FROM Users WHERE email = ?";
   db.query(q, [req.body.email, req.body.username], (err: any, data: any) => {
     if (err) return res.status(500).json(err);
-    if (data.length) return res.status(409).json("User already exists!");
+    if (data.length) return res.status(409).json(data);
 
     //Hash the password and create a user
     const salt = bcrypt.genSaltSync(10);
@@ -85,15 +85,24 @@ module.exports.login_post = (req: Request, res: Response) => {
 module.exports.verifyEmail_post = (req: Request, res: Response) => {
   const q1 = "SELECT * FROM Otp WHERE email = ?";
   db.query(q1, [req.body.email], (err1: any, data1: any) => {
-    if (err1) return res.status(500).json(err1);
+    if (err1) return res.status(500).json("Something wrong happened");
     if (req.body.verificationCode === data1[0].verificationCode) {
       const q2 = "UPDATE Users SET verified = TRUE WHERE email = ?";
       db.query(q2, [req.body.email], (err2: any, _: any) => {
-        if (err2) return res.status(500).json(err2);
+        if (err2) return res.status(500).json("Something wrong happened");
         if (data1[0].verificationCode === req.body.verificationCode) {
           return res.status(200).json("Email verified");
         } else return res.status(500).json("Email not verified");
       });
     } else return res.status(500).json("WRONK");
+  });
+};
+
+module.exports.emailAlreadyExists_post = (req: Request, res: Response) => {
+  const q = "SELECT * FROM Users WHERE email = ?";
+  db.query(q, [req.body.email], (err: any, data: any) => {
+    if (err) return res.status(500).json(err);
+    if (data.length) return res.status(200).json({ exists: true, verified: data[0].verified === 1});
+    else return res.status(200).json({ exists: false, verified: false  });
   });
 };

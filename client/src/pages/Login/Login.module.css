@@ -9,6 +9,12 @@
   height: calc(100vh - var(--navbar-height));
 }
 
+.error {
+  font-size: small;
+  color: var(--tint-color);
+  font-weight: bold;
+}
+
 .logo {
   font-size: 2rem;
   margin-bottom: 3rem;
@@ -23,8 +29,7 @@
   width: clamp(1rem, 90%, 25rem);
 }
 
-@media only screen and (max-width: 800px) 
-{
+@media only screen and (max-width: 800px) {
   .block {
     background-color: transparent;
   }

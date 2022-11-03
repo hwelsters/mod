@@ -42,12 +42,22 @@ function useAuthProvider() {
 
   const signIn = async (email: string, password: string) => {
     console.log("SIGN IN");
-    setUser(await apiPost("api/auth/login", { email, password }));
+    const res = await (await apiPost("api/auth/login", { email, password })).data;
+    console.log(res);
+    setUser(res);
   };
 
-  const authenticateEmail = async (email: string, otp: string) => {
+  const authenticateEmail = async (email: string, verificationCode: string) => {
     console.log("AUTHENTICATE");
-    return await apiPost("api/auth/verifyEmail", { email, otp });
+    try {
+      const res = await apiPost("api/auth/verifyEmail", {
+        email: email,
+        verificationCode: verificationCode,
+      });
+      return true;
+    } catch (err) {
+      return false;
+    }
   };
 
   const logout = () => {
@@ -55,8 +65,9 @@ function useAuthProvider() {
     setUser(null);
   };
 
-  const emailAlreadyExists = (email: string) => {
-    return true;
+  const emailExists = async (email: string) => {
+    const res = await apiPost("api/auth/emailExists", { email });
+    return res.data;
   };
 
   return {
@@ -64,6 +75,7 @@ function useAuthProvider() {
     signIn,
     register,
     logout,
-    authenticateEmail
+    authenticateEmail,
+    emailExists,
   };
 }
