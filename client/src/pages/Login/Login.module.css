@@ -27,10 +27,12 @@
   border-radius: var(--border-radius);
   padding: 2rem;
   width: clamp(1rem, 90%, 25rem);
+  box-shadow: -1rem 1rem var(--fg-s-color);
 }
 
 @media only screen and (max-width: 800px) {
   .block {
     background-color: transparent;
+    box-shadow: none;
   }
 }

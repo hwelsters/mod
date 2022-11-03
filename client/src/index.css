@@ -19,11 +19,19 @@ body {
   --font-color: var(--white);
   --font-s-color: var(--white);
 
-  --tint-color: var(--green);
+  --tint-color: var(--red);
   --tint-font-color: var(--black);
 
   --navbar-height: 3rem;
   --border-radius: 0.2rem;
+/* 
+  --bg-color: var(--white);
+  --font-color: var(--blue);
+  --fg-color: var(--yellow);
+  --fg-s-color: var(--orange);
+  
+  --tint-color: var(--blue);
+  --tint-font-color: var(--white); */
 
   background-color: var(--bg-color);
   color: var(--font-color);

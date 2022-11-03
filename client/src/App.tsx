@@ -9,6 +9,7 @@ import Home from "pages/Home/Home";
 import NotFound from "pages/NotFound/NotFound";
 import Login from "pages/Login/Login";
 import Register from "pages/Register/Register";
+import Yoga from "pages/Yoga/Yoga";
 
 // TEST
 import { apiGet } from "services/api";
@@ -28,6 +29,7 @@ function App() {
           <Route path={pathURLs.home} element={<Home />} />
           <Route path={pathURLs.login} element={<Login />} />
           <Route path={pathURLs.register} element={<Register />} />
+          <Route path={pathURLs.yoga} element={<Yoga />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,3 +1,10 @@
 1. Fix number input UX
-2. Maybe I should save all the files to create-hwelsters-app? This will be the new base
-2. Create front page
+2. Maybe I should save all the files to create-hwelsters-app? This will be the new base (DONE)
+3. Create Yoga detection page (detect very basic pose) 
+4. Create front page 
+
+BACKBURNER
+About Us page
+Copyright policy
+Terms of Service
+Privacy Policy
