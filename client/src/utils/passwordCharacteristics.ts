@@ -18,6 +18,6 @@ export const hasEightLetters = (password: string) => {
 }
 
 export const isMatching = (password: string, confirmPassword: string) => {
-    if (password == "" || confirmPassword == "") return false;
-    return password == confirmPassword;
+    if (password === "" || confirmPassword === "") return false;
+    return password === confirmPassword;
 }

@@ -9,6 +9,7 @@ services:
     container_name: api_c
     networks:
       - webnet
+    restart: always
   client:
     build: ./client
     networks:

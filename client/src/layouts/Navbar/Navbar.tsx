@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import FaceIcon from "@mui/icons-material/Face";
+import LibraryMusicOutlinedIcon from '@mui/icons-material/LibraryMusicOutlined';
 
 import pageURLs from "data/pageURLs";
 import { useAuth } from "hooks/useAuth";
@@ -16,6 +17,9 @@ export default function Navbar() {
         <Logo />
       </span>
       <span className={styles.right}>
+        <span className={styles.music}>
+          <LibraryMusicOutlinedIcon />
+        </span>
         <span className={styles.profile}>
           <FaceIcon />
         </span>
