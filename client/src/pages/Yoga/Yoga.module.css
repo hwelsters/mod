@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    position: relative;
 
     align-items: center;
     justify-content: center;
@@ -9,12 +10,12 @@
 
 .yoga {
     display: flex;
+    position: relative;
 
     background-color: var(--fg-color);
-    box-shadow: -1.5rem 1.5rem var(--fg-s-color);
-    width: clamp(1rem, 95%, 75rem);
-    height: calc(100vh - 4 * var(--navbar-height));
-
+    box-shadow: -0.5rem 0.5rem var(--fg-s-color);
+    
+    object-fit: contain;
     margin-top: 2rem;
     margin-bottom: 5rem;
 }
@@ -22,7 +23,24 @@
 @media only screen and (max-width: 800px) 
 {
   .yoga {
-    width: clamp(1rem, 90%, 75rem);
     box-shadow: none;
   }
+}
+
+.webcam {
+    margin-right: auto;
+    left: 0;
+    top: 0;
+
+    width: 100%;
+    object-fit: contain;
+}
+
+.overlay {
+    position: absolute;
+    background-color: var(--black);
+    opacity: 0.75;
+
+    width: 100%;
+    height: 100%;
 }

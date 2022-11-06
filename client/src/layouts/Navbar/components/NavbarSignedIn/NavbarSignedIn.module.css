@@ -1,0 +1,7 @@
+.profile_pic {
+    height: calc(var(--navbar-height) * 0.9);
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: -1rem;
+}

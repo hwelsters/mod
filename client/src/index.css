@@ -22,6 +22,22 @@ body {
   --tint-color: var(--red);
   --tint-font-color: var(--black);
 
+  
+  /* --purple: #683aff;
+  --test-back: #5c14ff;
+  --test-purple: #8f44ff;
+  --whitish: #ffe090;
+
+  --fg-color: var(--test-purple);
+  --fg-s-color: var(--test-back);
+  --bg-color: var(--purple);
+
+  --font-color: var(--whitish);
+  --font-s-color: var(--white);
+
+  --tint-color: var(--white);
+  --tint-font-color: var(--purple); */
+
   --navbar-height: 3rem;
   --border-radius: 0.2rem;
 /* 

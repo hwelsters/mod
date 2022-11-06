@@ -21,74 +21,6 @@
   font-size: xx-large;
 }
 
-.login,
-.register {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  padding: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-
-  letter-spacing: 2px;
-  font-size: medium;
-  font-weight: bolder;
-
-  transition: all 250ms;
-
-  cursor: pointer;
-}
-
-.login:hover {
-  transform: scale(1.05);
-  color: var(--tint-color);
-}
-
-.register {
-  background-color: var(--font-color);
-  color: var(--bg-color);
-  font-size: large;
-  border-radius: var(--border-radius);
-  font-weight: bold;
-  margin-left: 1rem;
-  cursor: pointer;
-
-  transition: all 250ms ease-in-out;
-}
-
-.register:hover {
-  color: var(--tint-font-color);
-  border-radius: 1.5rem;
-  background-color: var(--tint-color);
-  transform: scale(1.05);
-  transition: all 150ms;
-}
-
-.register:active {
-  border-radius: 1rem;
-  transform: scale(0.95);
-}
-
-@media only screen and (max-width: 800px) {
-  .login,
-  .register {
-    display: none;
-  }
-}
-
-.profile {
-  display: none;
-}
-
-@media only screen and (max-width: 800px) {
-  .profile {
-    display: flex;
-    transform: scale(1.5);
-  }
-}
-
 .music {
   transform: scale(1.25);
   margin-right: 1rem;
@@ -99,4 +31,11 @@
 
 .music:hover {
   transform: scale(1.4);
+}
+
+
+@media only screen and (max-width: 460px) {
+  .music {
+    display: none;
+  }
 }
