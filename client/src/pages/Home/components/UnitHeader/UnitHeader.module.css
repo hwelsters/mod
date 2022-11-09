@@ -1,0 +1,59 @@
+.root {
+  display: flex;
+
+  flex-direction: row;
+
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 90%;
+  height: 3rem;
+  background-color: var(--fg-color);
+  color: var(--fg-font-color);
+  margin-bottom: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.5rem var(--fg-s-color);
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+}
+
+.info {
+  padding: 1.5rem;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  margin-right: 2rem;
+
+  background-color: var(--fg-s-color);
+  color: var(--fg-s-font-color);
+  border-radius: var(--border-radius);
+  font-family: "Paytone One", sans-serif;
+
+  cursor: pointer;
+}
+
+.info:hover {
+  filter: brightness(1.1);
+}
+
+.title {
+  font-size: x-large;
+  font-family: "Paytone One", sans-serif;
+  font-weight: bold;
+  margin-left: 2rem;
+}
+
+.description {
+  font-size: medium;
+  filter: brightness(0.9);
+  font-weight: light;
+  margin-left: 2rem;
+}

@@ -1,7 +1,31 @@
 .profile_pic {
-    height: calc(var(--navbar-height) * 0.9);
-    border-radius: 50%;
-    cursor: pointer;
-    margin-left: 1rem;
-    margin-right: -1rem;
+  height: calc(var(--navbar-height) * 0.9);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 1rem;
+  margin-right: -1rem;
+}
+
+.icon {
+  transform: scale(1.25);
+  margin-right: 2rem;
+  cursor: pointer;
+
+  transition: all 250ms;
+}
+
+.icon:hover {
+  transform: scale(1.4);
+}
+
+@media only screen and (max-width: 460px) {
+  .icon {
+    display: none;
+  }
+}
+
+.number {
+    font-weight: bolder;
+    margin-left: -1rem;
+    margin-right: 2rem;
 }

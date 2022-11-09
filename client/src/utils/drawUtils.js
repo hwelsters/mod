@@ -18,10 +18,11 @@ import * as posenet from "@tensorflow-models/posenet";
 import * as tf from "@tensorflow/tfjs";
 
 const correctColor = "#683aff";
-const wrongColor = "#fff";
+const colors = ["#ef476f", "#4100f4", "#36db89", "#683aff","#ef476f", "#4100f4", "#36db89"];
+const wrongColor = "#2f2e32";
 
 const boundingBoxColor = "red";
-const lineWidth = 2;
+const lineWidth = 6;
 
 export const tryResNetButtonName = "tryResNetButton";
 export const tryResNetButtonText = "[New] Try ResNet50";
@@ -97,28 +98,92 @@ export function drawSegment([ay, ax], [by, bx], color, scale, ctx) {
   ctx.moveTo(ax * scale, ay * scale);
   ctx.lineTo(bx * scale, by * scale);
   ctx.lineWidth = lineWidth;
-  ctx.strokeStyle = wrongColor;
+  ctx.strokeStyle = color;
   ctx.stroke();
 }
+
+const getAdjacentKeyP = (keypoints, minConfidence) => {
+  const adjacentKeyPoints = [];
+  if (keypoints[4].score > minConfidence && keypoints[2].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[4], keypoints[2]]);
+  if (keypoints[2].score > minConfidence && keypoints[0].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[2], keypoints[0]]);
+  if (keypoints[0].score > minConfidence && keypoints[1].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[0], keypoints[1]]);
+  if (keypoints[1].score > minConfidence && keypoints[3].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[1], keypoints[3]]);
+  if (keypoints[10].score > minConfidence && keypoints[8].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[10], keypoints[8]]);
+  if (keypoints[8].score > minConfidence && keypoints[6].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[8], keypoints[6]]);
+  if (keypoints[6].score > minConfidence && keypoints[5].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[6], keypoints[5]]);
+  if (keypoints[5].score > minConfidence && keypoints[7].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[5], keypoints[7]]);
+  if (keypoints[7].score > minConfidence && keypoints[9].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[7], keypoints[9]]);
+  if (keypoints[6].score > minConfidence && keypoints[12].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[6], keypoints[12]]);
+  if (keypoints[5].score > minConfidence && keypoints[11].score > minConfidence)
+    adjacentKeyPoints.push([keypoints[5], keypoints[11]]);
+  if (
+    keypoints[12].score > minConfidence &&
+    keypoints[11].score > minConfidence
+  )
+    adjacentKeyPoints.push([keypoints[12], keypoints[11]]);
+  if (
+    keypoints[12].score > minConfidence &&
+    keypoints[14].score > minConfidence
+  )
+    adjacentKeyPoints.push([keypoints[12], keypoints[14]]);
+  if (
+    keypoints[11].score > minConfidence &&
+    keypoints[13].score > minConfidence
+  )
+    adjacentKeyPoints.push([keypoints[11], keypoints[13]]);
+  if (
+    keypoints[14].score > minConfidence &&
+    keypoints[16].score > minConfidence
+  )
+    adjacentKeyPoints.push([keypoints[14], keypoints[16]]);
+  if (
+    keypoints[13].score > minConfidence &&
+    keypoints[15].score > minConfidence
+  )
+    adjacentKeyPoints.push([keypoints[13], keypoints[15]]);
+  return adjacentKeyPoints;
+};
 
 /**
  * Draws a pose skeleton by looking up all adjacent keypoints/joints
  */
 export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
-  const adjacentKeyPoints = posenet.getAdjacentKeyPoints(
-    keypoints,
-    minConfidence
-  );
+  const adjacentKeyPoints = getAdjacentKeyP(keypoints, minConfidence);
 
-  adjacentKeyPoints.forEach((keypoints) => {
+  console.log("ADJACENT", adjacentKeyPoints);
+  adjacentKeyPoints.forEach((keypoints, index) => {
     drawSegment(
-      toTuple(keypoints[0].position),
-      toTuple(keypoints[1].position),
-      correctColor,
+      toTuple(keypoints[0]),
+      toTuple(keypoints[1]),
+      wrongColor,
       scale,
       ctx
     );
   });
+}
+
+function stringToHash(string) {
+  var hash = 0;
+
+  if (string.length == 0) return hash;
+
+  for (let i = 0; i < string.length; i++) {
+    const char = string.charCodeAt(i);
+    hash = (hash << 5) - hash + char;
+    hash = hash & hash;
+  }
+
+  return hash;
 }
 
 /**
@@ -132,7 +197,8 @@ export function drawKeypoints(keypoints, minConfidence, ctx, scale = 1) {
       continue;
     }
 
-    const { y, x } = keypoint.position;
+    // const { y, x } = keypoint.position;
+    const { y, x } = keypoint;
     drawPoint(ctx, y * scale, x * scale, 3, correctColor);
   }
 }

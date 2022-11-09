@@ -22,6 +22,8 @@
   padding: 2rem;
   width: clamp(1rem, 90%, 25rem);
   box-shadow: -1rem 1rem var(--fg-s-color);
+
+  color: var(--fg-font-color);
 }
 
 @media only screen and (max-width: 800px) 

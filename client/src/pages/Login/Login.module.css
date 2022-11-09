@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   background-color: var(--fg-color);
+  color: var(--fg-font-color);
   border-radius: var(--border-radius);
   padding: 2rem;
   width: clamp(1rem, 90%, 25rem);

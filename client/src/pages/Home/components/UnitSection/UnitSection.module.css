@@ -1,0 +1,17 @@
+.disabled,
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.disabled {
+    filter: brightness(0.85);
+}
+
+.level {
+    display: flex;
+    flex-direction: row;
+}

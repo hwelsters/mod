@@ -4,6 +4,7 @@ body {
   --dark-grey: #1f1f22;
   --light-grey: #2f2e32;
   --white: #f3f2f4;
+  --white-grey: #e5e5e5;
 
   --red: #ef476f;
   --yellow: #ffc863;
@@ -11,9 +12,11 @@ body {
   --pink: #eea1be;
   --blue: #4100f4;
   --green: #36db89;
+  --purple: #683aff;
 
   --fg-color: var(--dark-grey);
   --fg-s-color: var(--light-grey);
+  --fg-font-color: var(--white);
   --bg-color: var(--black);
 
   --font-color: var(--white);
@@ -21,8 +24,24 @@ body {
 
   --tint-color: var(--red);
   --tint-font-color: var(--black);
-
   
+  --navbar-height: 3rem;
+  --border-radius: 0.5rem;
+  /* LIGHT */
+  /* --fg-s-color: #c2d1dd;
+  --fg-color: #d6e4ef;
+  --fg-font-color: #aac1d4;
+  --bg-color: #f3f2f4;
+
+  --tint-color: var(--red);
+  --tint-font-color: var(--white);
+
+  --font-color: #3c3c3c;
+  --font-s-color: #3c3c3c;
+
+   */
+
+  /* ALT */
   /* --purple: #683aff;
   --test-back: #5c14ff;
   --test-purple: #8f44ff;
@@ -30,17 +49,16 @@ body {
 
   --fg-color: var(--test-purple);
   --fg-s-color: var(--test-back);
-  --bg-color: var(--purple);
+  --fg-font-color: var(--whitish);
+  --bg-color: var(--whitish);
 
-  --font-color: var(--whitish);
-  --font-s-color: var(--white);
+  --font-color: var(--test-back);
+  --font-s-color: var(--whitish);
 
-  --tint-color: var(--white);
-  --tint-font-color: var(--purple); */
+  --tint-color: var(--purple);
+  --tint-font-color: var(--whitish); */
 
-  --navbar-height: 3rem;
-  --border-radius: 0.2rem;
-/* 
+  /* 
   --bg-color: var(--white);
   --font-color: var(--blue);
   --fg-color: var(--yellow);
@@ -70,6 +88,6 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

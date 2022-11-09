@@ -36,6 +36,10 @@
     object-fit: contain;
 }
 
+.overlay_loading {
+  opacity: 1;
+}
+
 .overlay {
     position: absolute;
     background-color: var(--black);

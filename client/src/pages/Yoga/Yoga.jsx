@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 
 import * as tf from "@tensorflow/tfjs";
 import * as posenet from "@tensorflow-models/posenet";
+import * as poseDetection from "@tensorflow-models/pose-detection";
 
 import Webcam from "react-webcam";
 
@@ -14,48 +15,38 @@ import { drawKeypoints, drawSkeleton } from "utils/drawUtils";
 import useWindowDimensions from "hooks/useWindowDimensions";
 
 export default function Yoga() {
+  const [style, setStyle] = useState(styles.overlay_loading);
   const { width, height } = { width: 640, height: 480 };
 
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
-  const imageScaleFactor = 0.5;
+  const imageScaleFactor = 1;
   const flipHorizontal = false;
 
   const runPosenet = async () => {
-    const net = await posenet.load({
-      architecture: "MobileNetV1",
-      outputStride: 16,
-      multiplier: 0.75,
-      quantBytes: 2,
-    });
+    const detector = await poseDetection.createDetector(
+      poseDetection.SupportedModels.MoveNet
+    );
 
-    if (net != null) {
-      setInterval(() => {
-        detect(net);
-      }, 100);
-    }
+    setStyle("");
+
+    setInterval(() => {
+      detect(null, detector);
+    }, 100);
   };
 
-  const detect = async (net) => {
+  const detect = async (net, detector) => {
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current != null &&
       webcamRef.current.video.readyState === 4
     ) {
       const video = webcamRef.current.video;
-      video.width = width;
-      video.height = height;
 
-      const pose = await net.estimateSinglePose(
-        video,
-        imageScaleFactor,
-        flipHorizontal
-      );
-      console.log(video);
-      console.log(pose);
+      const pose = await detector.estimatePoses(video, {});
 
-      drawCanvas(pose, video, width, height, canvasRef);
+      drawCanvas(pose[0], video, width, height, canvasRef);
     }
   };
 
@@ -64,8 +55,8 @@ export default function Yoga() {
     canvas.current.width = videoWidth;
     canvas.current.height = videoHeight;
 
-    drawKeypoints(pose["keypoints"], 0.5, ctx);
-    drawSkeleton(pose["keypoints"], 0.5, ctx);
+    drawKeypoints(pose.keypoints, 0.3, ctx);
+    drawSkeleton(pose.keypoints, 0.3, ctx);
   };
 
   runPosenet();
@@ -74,8 +65,12 @@ export default function Yoga() {
       <Navbar />
       <div className={styles.container}>
         <div className={styles.yoga}>
-          <Webcam className={styles.webcam} ref={webcamRef} audio={false} />
-          <canvas className={styles.overlay} ref={canvasRef} />
+          <Webcam
+            className={styles.webcam}
+            ref={webcamRef}
+            audio={false}
+          />
+          <canvas className={`${styles.overlay} ${style}`} ref={canvasRef} />
         </div>
       </div>
       <Footer />

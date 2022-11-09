@@ -1,0 +1,12 @@
+.right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 4;
+}
+
+@media only screen and (max-width: 800px) {
+  .right {
+    display: none;
+  }
+}

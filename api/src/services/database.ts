@@ -4,6 +4,7 @@ const mysql = require("mysql");
 const createUserTable = `
 CREATE TABLE IF NOT EXISTS Users(
   id INT PRIMARY KEY AUTO_INCREMENT, 
+  gems INT DEFAULT 0,
   username VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE, 
   password VARCHAR(255) NOT NULL,

@@ -25,6 +25,7 @@ export default function Footer() {
       </div>
       <br/><br/><br/><br/><br/><br/><br/>
       <div className={styles.footer_text}>© Copyright by hwelsters (but not really)</div>
+      <br/><br/><br/><br/><br/><br/><br/>
     </div>
   );
 }

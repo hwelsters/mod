@@ -24,7 +24,7 @@ function useAuthProvider() {
   const [user, setUser] = useState<any>(INITIAL_STATE.user);
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(user));
+    if (user) localStorage.setItem("user", user);
   }, [user]);
 
   const register = async (

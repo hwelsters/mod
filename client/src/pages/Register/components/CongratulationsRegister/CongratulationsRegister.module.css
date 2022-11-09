@@ -1,5 +1,6 @@
 .text {
     display: flex;
+    flex-direction: column;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -7,4 +8,10 @@
     font-weight: bolder;
 
     margin-top: 1rem;
+}
+
+.error {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--tint-color);
 }

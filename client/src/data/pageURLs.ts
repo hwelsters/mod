@@ -1,9 +1,14 @@
 const pageURLs = {
   home: "/",
+  learn: "/learn",
+  poses: "/poses",
+  review: "/review",
+  shop: "/shop",
   login: "/login",
   register: "/register",
   yoga: "/yoga",
-  testImgURL: "https://itch.io/static/images/frog.png"
+  landing: "/landing",
+  testImgURL: "https://itch.io/static/images/frog.png",
 };
 
 export default pageURLs;
