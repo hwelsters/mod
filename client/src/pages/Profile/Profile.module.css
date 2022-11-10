@@ -6,14 +6,14 @@
   display: flex;
   flex-direction: row;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   background-color: var(--fg-color);
   padding: 1rem;
   border-radius: var(--border-radius);
 }
 
 .profile_pic {
-  height: 10rem;
+  width: clamp(1rem, 50%, 10rem);
   aspect-ratio: 1/1;
   border-radius: 50%;
   padding: 0.25rem;
