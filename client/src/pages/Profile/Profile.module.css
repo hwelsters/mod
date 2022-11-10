@@ -23,11 +23,13 @@
   width: clamp(1rem, 100%, 5rem);
   border-radius: var(--border-radius);
   cursor: pointer;
+  transition: all 250ms;
 
 }
 
 .edit:hover {
   filter: brightness(1.05);
+  transform: scale(1.05);
 }
 
 .header {

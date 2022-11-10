@@ -12,8 +12,8 @@ export default function HomeLeft() {
   return (
     <div className={styles.left}>
       <NavIcon Icon={HomeIcon} title="Learn" to={pageURLs.home}/>
-      <NavIcon Icon={SelfImprovementIcon} title="Poses" to={pageURLs.poses}/>
-      <NavIcon Icon={MenuBookIcon} title="Review" to={pageURLs.review}/>
+      {/* <NavIcon Icon={SelfImprovementIcon} title="Poses" to={pageURLs.poses}/> */}
+      {/* <NavIcon Icon={MenuBookIcon} title="Review" to={pageURLs.review}/> */}
       <NavIcon Icon={StorefrontIcon} title="Shop" to={pageURLs.shop}/>
     </div>
   );

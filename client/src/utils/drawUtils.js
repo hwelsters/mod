@@ -18,7 +18,6 @@ import * as posenet from "@tensorflow-models/posenet";
 import * as tf from "@tensorflow/tfjs";
 
 const correctColor = "#683aff";
-const colors = ["#ef476f", "#4100f4", "#36db89", "#683aff","#ef476f", "#4100f4", "#36db89"];
 const wrongColor = "#2f2e32";
 
 const boundingBoxColor = "red";
@@ -157,14 +156,15 @@ const getAdjacentKeyP = (keypoints, minConfidence) => {
 /**
  * Draws a pose skeleton by looking up all adjacent keypoints/joints
  */
-export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
+export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1, correct = false) {
   const adjacentKeyPoints = getAdjacentKeyP(keypoints, minConfidence);
 
   adjacentKeyPoints.forEach((keypoints, index) => {
+    const color = correct === true? correctColor : wrongColor;
     drawSegment(
       toTuple(keypoints[0]),
       toTuple(keypoints[1]),
-      wrongColor,
+      color,
       scale,
       ctx
     );
