@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, createContext } from "react";
 import { apiPost } from "services/api";
 
 const INITIAL_STATE = {
-  user: localStorage.getItem("user") || null,
+  user: localStorage.getItem("user")? JSON.parse(localStorage.getItem("user") || '{}') : null,
   signIn: async (email: string, password: string) => {},
   register: (username: string, email: string, password: string) => {},
   logout: () => {},
@@ -21,10 +21,10 @@ export const useAuth = () => {
 };
 
 function useAuthProvider() {
-  const [user, setUser] = useState<any>(INITIAL_STATE.user);
+  const [user, setUser] = useState<any>(JSON.stringify(INITIAL_STATE.user) === JSON.stringify("{}")? null : INITIAL_STATE.user);
 
   useEffect(() => {
-    if (user) localStorage.setItem("user", user);
+    if (user) localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
 
   const register = async (
