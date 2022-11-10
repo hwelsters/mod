@@ -1,0 +1,43 @@
+.profile {
+  width: 80%;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: var(--fg-color);
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.profile_pic {
+  height: 10rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  padding: 0.25rem;
+  border-style: solid;
+  border-color: var(--font-color);
+  border-width: 0.2rem;
+}
+
+.right {
+    margin-left: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-family: "Paytone One", sans-serif;
+}
+
+.date {
+    font-size: 1rem;
+}
+
+.description {
+    filter: brightness(0.8);
+}

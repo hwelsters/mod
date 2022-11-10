@@ -12,6 +12,7 @@ import Home from "pages/Home/Home";
 import Shop from "pages/Shop/Shop";
 import Review from "pages/Review/Review";
 import Poses from "pages/Poses/Poses";
+import Profile from "pages/Profile/Profile";
 
 const LazyHome = React.lazy(()=> import("pages/Home/Home"))
 const LazyShop = React.lazy(()=>import("pages/Shop/Shop"))
@@ -36,6 +37,7 @@ function App() {
         <title>{config.name} | {config.description}</title>
         <Routes>
           <Route path={pathURLs.home} element={<Home/>} />
+          <Route path={pathURLs.profile} element={<Profile/>} />
           <Route path={pathURLs.shop} element={<Shop/>} />
           <Route path={pathURLs.review} element={<Review/>} />
           <Route path={pathURLs.poses} element={<Poses/>} />

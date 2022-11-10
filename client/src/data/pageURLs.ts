@@ -1,5 +1,6 @@
 const pageURLs = {
   home: "/",
+  profile: "/profile",
   learn: "/learn",
   poses: "/poses",
   review: "/review",

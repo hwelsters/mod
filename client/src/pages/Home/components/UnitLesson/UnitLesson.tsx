@@ -39,7 +39,7 @@ export default function UnitLesson({
     }
   };
   return (
-    <Link to={pageURLs.yoga + "?" + lesson}>
+    <Link to={disabled? pageURLs.home: pageURLs.yoga + "?" + lesson}>
       <button className={styles.root} disabled={disabled}>
         {pickIcon()}
       </button>

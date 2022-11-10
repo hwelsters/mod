@@ -1,8 +1,10 @@
 .right {
+  background-color: var(--fg-color);
   display: flex;
   flex-direction: column;
   align-items: center;
   flex: 4;
+  height: 5rem;
 }
 
 @media only screen and (max-width: 800px) {

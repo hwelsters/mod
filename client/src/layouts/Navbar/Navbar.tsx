@@ -8,7 +8,6 @@ import NavbarSignedIn from "./components/NavbarSignedIn/NavbarSignedIn";
 
 export default function Navbar() {
   const { user } = useAuth();
-  console.log(user);
   return (
     <div className={styles.root}>
       <span className={styles.logo}>
