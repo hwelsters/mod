@@ -18,6 +18,8 @@ export default function Yoga() {
   const [style, setStyle] = useState(styles.overlay_loading);
   const { width, height } = { width: 640, height: 480 };
 
+  const [refPose, setRefPose] = useState(null);
+
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
@@ -45,6 +47,7 @@ export default function Yoga() {
       const video = webcamRef.current.video;
 
       const pose = await detector.estimatePoses(video, {});
+      setRefPose(pose[0]);
 
       drawCanvas(pose[0], video, width, height, canvasRef);
     }
@@ -55,8 +58,10 @@ export default function Yoga() {
     canvas.current.width = videoWidth;
     canvas.current.height = videoHeight;
 
-    drawKeypoints(pose.keypoints, 0.3, ctx);
-    drawSkeleton(pose.keypoints, 0.3, ctx);
+    if (pose && pose.keypoints) {
+      drawKeypoints(pose.keypoints, 0.3, ctx);
+      drawSkeleton(pose.keypoints, 0.3, ctx);
+    }
   };
 
   runPosenet();
@@ -65,14 +70,11 @@ export default function Yoga() {
       <Navbar />
       <div className={styles.container}>
         <div className={styles.yoga}>
-          <Webcam
-            className={styles.webcam}
-            ref={webcamRef}
-            audio={false}
-          />
+          <Webcam className={styles.webcam} ref={webcamRef} audio={false} />
           <canvas className={`${styles.overlay} ${style}`} ref={canvasRef} />
         </div>
       </div>
+      <button onClick={() => console.log(refPose)}>SNIP</button>
       <Footer />
     </PageContainer>
   );

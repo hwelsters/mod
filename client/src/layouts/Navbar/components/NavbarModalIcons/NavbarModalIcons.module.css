@@ -9,12 +9,14 @@
   margin: 0.5rem;
   border-radius: var(--border-radius);
 
+  color: var(--fg-font-color);
   cursor: pointer;
   font-size: large;
 }
 
 .navbarModalIcons__root:hover {
   background-color: var(--bg-color);
+  color: var(--font-color);
 }
 
 .navbarModalIcons__text {

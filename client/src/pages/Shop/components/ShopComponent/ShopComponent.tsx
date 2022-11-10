@@ -8,6 +8,7 @@ import { useAuth } from "hooks/useAuth";
 type ShopComponentParams = {
   title: string;
   description: string;
+  img: string;
   cost: number;
   id: number;
 };
@@ -15,14 +16,15 @@ type ShopComponentParams = {
 export default function ShopComponent({
   title,
   description,
+  img,
   cost,
   id,
 }: ShopComponentParams) {
   const { buy } = useStore();
   const {user} = useAuth();
   return (
-    <button className={styles.root} onClick={() => {user.gems >= cost && buy(id)}} disabled={user.gems < cost}>
-      <img className={styles.img} src={pageURLs.testImgURL} />
+    <button className={styles.root} onClick={() => {user && user.gems >= cost && buy(id)}} disabled={!user || user.gems < cost}>
+      <img className={styles.img} src={img} />
       <span className={styles.right}>
         <span className={styles.title}>{title}</span>
         <span className={styles.description}>{description}</span>

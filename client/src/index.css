@@ -3,7 +3,7 @@ body {
   --black: #121212;
   --dark-grey: #1f1f22;
   --light-grey: #2f2e32;
-  --white: #f3f2f4;
+  --white: #fff;
   --white-grey: #e5e5e5;
 
   --red: #ef476f;
@@ -58,8 +58,8 @@ body {
   --tint-color: var(--purple);
   --tint-font-color: var(--whitish); */
 
-  /* 
-  --bg-color: var(--white);
+  
+  /* --bg-color: var(--white);
   --font-color: var(--blue);
   --fg-color: var(--yellow);
   --fg-s-color: var(--orange);

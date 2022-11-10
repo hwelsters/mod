@@ -44,8 +44,8 @@
 }
 
 .img {
-  height: 4rem;
-  margin: 2rem;
+  height: 6rem;
+  margin: 1rem;
   aspect-ratio: 1/1;
   object-fit: cover;
   border-radius: var(--border-radius);

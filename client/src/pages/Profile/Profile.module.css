@@ -5,12 +5,29 @@
 .block {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: calc(100% - 2rem);
   margin-top: 0.5rem;
   margin-bottom: 2rem;
   background-color: var(--fg-color);
+  color: var(--fg-font-color);
   padding: 1rem;
   border-radius: var(--border-radius);
+}
+
+.edit {
+  padding: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--fg-s-color);
+  width: clamp(1rem, 100%, 5rem);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+
+}
+
+.edit:hover {
+  filter: brightness(1.05);
 }
 
 .header {
@@ -19,8 +36,18 @@
   margin-left: 1rem;
 }
 
+.imageBlock {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  aspect-ratio: 1/1;
+  width: 8rem;
+}
+
 .profile_pic {
-  width: clamp(1rem, 50%, 10rem);
+  position: relative;
+  width: clamp(1rem, 80%, 8rem);
   aspect-ratio: 1/1;
   border-radius: 50%;
   padding: 0.25rem;
@@ -29,10 +56,28 @@
   border-width: 0.2rem;
 }
 
+.profilePicEdit {
+  position: absolute;
+  display: flex;
+  align-self: flex-end;
+  justify-self: flex-end;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  background-color: var(--fg-color);
+  border-style: solid;
+  border-width: 0.2rem;
+
+  cursor: pointer;
+}
+
 .right {
   margin-left: 1rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .name {
@@ -41,9 +86,27 @@
   font-family: "Paytone One", sans-serif;
 }
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  row-gap: 0.5rem;
+  column-gap: 0.5rem;
+}
+
+@media only screen and (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media only screen and (max-width: 460px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .award {
-  margin: 0.5rem;
-  width: 3rem;
+  width: 100%;
   aspect-ratio: 1/1;
   border-radius: var(--border-radius);
   transition: all 200ms;
@@ -59,5 +122,4 @@
 }
 
 .description {
-  filter: brightness(0.8);
 }

@@ -31,6 +31,7 @@ export default function Shop() {
             id={index}
             title={e.title}
             description={e.description}
+            img={e.img}
             cost={e.cost}
           />
         ))}

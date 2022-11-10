@@ -160,7 +160,6 @@ const getAdjacentKeyP = (keypoints, minConfidence) => {
 export function drawSkeleton(keypoints, minConfidence, ctx, scale = 1) {
   const adjacentKeyPoints = getAdjacentKeyP(keypoints, minConfidence);
 
-  console.log("ADJACENT", adjacentKeyPoints);
   adjacentKeyPoints.forEach((keypoints, index) => {
     drawSegment(
       toTuple(keypoints[0]),

@@ -9,6 +9,7 @@ dotenv.config();
 
 import authRoute from "./routes/authRoute";
 import shopRoute from "./routes/shopRoute";
+import posesRoute from "./routes/posesRoute";
 
 const port = process.env.PORT || 4000;
 
@@ -18,6 +19,7 @@ app.use(cookieParser());
 
 app.use("/api/auth", authRoute);
 app.use("/api/shop", shopRoute);
+app.use("/api/poses", posesRoute);
 
 app.get("/api", (req: Request, res: Response) => {
   res.status(200).json("TEST:: BASE URL");
