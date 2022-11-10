@@ -6,10 +6,17 @@
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-top: 0.5rem;
   margin-bottom: 2rem;
   background-color: var(--fg-color);
   padding: 1rem;
   border-radius: var(--border-radius);
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  margin-left: 1rem;
 }
 
 .profile_pic {
@@ -23,9 +30,9 @@
 }
 
 .right {
-    margin-left: 1rem;
-    display: flex;
-    flex-direction: column;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
@@ -34,10 +41,23 @@
   font-family: "Paytone One", sans-serif;
 }
 
+.award {
+  margin: 0.5rem;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  border-radius: var(--border-radius);
+  transition: all 200ms;
+  cursor: pointer;
+}
+
+.award:hover {
+  transform: scale(1.1);
+}
+
 .date {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .description {
-    filter: brightness(0.8);
+  filter: brightness(0.8);
 }

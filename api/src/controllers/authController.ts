@@ -70,15 +70,10 @@ module.exports.login_post = (req: Request, res: Response) => {
       return res.status(400).json("Wrong email or password");
     }
 
-    const token = jwt.sign({ id: data[0].id }, "hi");
+    const token = jwt.sign({ id: data[0].id }, process.env.SECRET_KEY || "super secret key");
     const { password, ...other } = data[0];
 
-    res
-      .cookie("accessToken", token, {
-        httpOnly: true,
-      })
-      .status(200)
-      .json(other);
+    res.status(200).json({ ...other, token });
   });
 };
 
@@ -102,7 +97,10 @@ module.exports.emailAlreadyExists_post = (req: Request, res: Response) => {
   const q = "SELECT * FROM Users WHERE email = ?";
   db.query(q, [req.body.email], (err: any, data: any) => {
     if (err) return res.status(500).json(err);
-    if (data.length) return res.status(200).json({ exists: true, verified: data[0].verified === 1});
-    else return res.status(200).json({ exists: false, verified: false  });
+    if (data.length)
+      return res
+        .status(200)
+        .json({ exists: true, verified: data[0].verified === 1 });
+    else return res.status(200).json({ exists: false, verified: false });
   });
 };

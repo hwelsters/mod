@@ -15,7 +15,6 @@
   transform: translateY(-0.5rem);
   box-shadow: 0 0.5rem var(--fg-s-color);
   transition: all 150ms;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 500px) {
@@ -25,16 +24,23 @@
   }
 }
 
-.root:hover {
+.root:enabled:hover {
   filter: brightness(1.01);
 
   transform: translateY(-0.4rem);
+  cursor: pointer;
   box-shadow: 0 0.4rem var(--fg-s-color);
 }
 
-.root:active {
+.root:enabled:active {
   box-shadow: 0 0 var(--fg-s-color);
   transform: translateY(0);
+}
+
+.root:disabled {
+  filter: brightness(0.85);
+  transform: translateY(0);
+  box-shadow: 0 0 var(--fg-s-color);
 }
 
 .img {
@@ -92,7 +98,6 @@
   color: var(--fg-font-color);
   border-radius: var(--border-radius);
   border: none;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 500px) {

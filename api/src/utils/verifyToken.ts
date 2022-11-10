@@ -1,11 +1,12 @@
 const jwt = require("jsonwebtoken");
 
 function verify(req: any, res: any, next: any) {
-  const token = req.cookies.access_token;
+  const token = req.headers.token;
   if (token) {
     jwt.verify(token, process.env.SECRET_KEY, (err : Error, user : any) => {
-      if (err) res.status(403).json("Token is not valid!");
+      if (err) return res.status(403).json("Token is not valid!");
       req.user = user;
+      console.log(req.user);
       next();
     });
   } else {
@@ -13,4 +14,4 @@ function verify(req: any, res: any, next: any) {
   }
 }
 
-module.exports = verify;
+export default verify;

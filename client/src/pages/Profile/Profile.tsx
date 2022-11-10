@@ -21,12 +21,46 @@ export default function Profile() {
               <span className={styles.date}>📅 Date created: 01/10/10</span>
             </span>
           </span>
+          <span className={styles.header}>📝 Description</span>
           <span className={styles.block}>
             <span className={styles.description}>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis
               velit recusandae voluptatum laborum harum repudiandae veniam
               illum? Et modi dolores doloribus dolorum perspiciatis eos hic
               ratione ipsam, magnam sequi? Nisi?
+            </span>
+          </span>
+          <span className={styles.header}>🏆 Awards</span>
+          <span className={styles.block}>
+            <span className={styles.grid}>
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
+              <img className={styles.award} src={pageURLs.testImgURL} />
             </span>
           </span>
         </div>

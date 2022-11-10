@@ -1,27 +1,27 @@
 const itemsForSale = [
   {
     img: "",
-    cost: "",
-    title: "",
-    description: "",
+    cost: 0,
+    title: "Cool thing",
+    description: "thi thi",
   },
   {
     img: "",
-    cost: "",
-    title: "",
-    description: "",
+    cost: 1,
+    title: "Epic meme",
+    description: "me me",
   },
   {
     img: "",
-    cost: "",
-    title: "",
-    description: "",
+    cost: 2,
+    title: "a",
+    description: "b",
   },
   {
     img: "",
-    cost: "",
-    title: "",
-    description: "",
+    cost: 3,
+    title: "a",
+    description: "a",
   },
 ];
 
