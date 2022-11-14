@@ -21,15 +21,15 @@ const findSimilarity = (keypoints1 : any, keypoints2: any, maxAngleDifference : 
   const angles1 = getAllJointAngles(keypoints1);
   const angles2 = getAllJointAngles(keypoints2);
 
+  let difference = 0;
   for (let i = 0; i < angles1.length; i++) {
-    if (Math.abs(angles1[i] - angles2[i]) > maxAngleDifference) return false;
+    difference += Math.abs(angles1[i] - angles2[i]);
   }
-  return true;
+  return difference < maxAngleDifference * angles1.length;
 }
 
 const getAllJointAngles = (keypoints : any) => {
   const angles = [];
-  console.log(keypoints);
   angles.push(findAngle(keypoints[10], keypoints[6], keypoints[8]))
   angles.push(findAngle(keypoints[8], keypoints[5], keypoints[6]))
   angles.push(findAngle(keypoints[5], keypoints[9], keypoints[7]))

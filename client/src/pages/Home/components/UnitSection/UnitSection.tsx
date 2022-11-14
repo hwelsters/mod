@@ -21,13 +21,13 @@ export default function UnitSection({ title, description, progress, level }: Uni
 
       <span className={styles.level}>
         <UnitLesson type={1} disabled={progress < 1} lesson={level + 2}/>
-        <UnitLesson type={1} disabled={progress < 1} lesson={level + 3} />
+        <UnitLesson type={1} disabled={progress < 2} lesson={level + 3} />
       </span>
 
       <span className={styles.level}>
         <UnitLesson type={2} disabled={progress < 3}  lesson={level + 4}/>
-        <UnitLesson type={2} disabled={progress < 3}  lesson={level + 5}/>
-        <UnitLesson type={2} disabled={progress < 3}  lesson={level + 6}/>
+        <UnitLesson type={2} disabled={progress < 4}  lesson={level + 5}/>
+        <UnitLesson type={2} disabled={progress < 5}  lesson={level + 6}/>
       </span>
     </div>
   );

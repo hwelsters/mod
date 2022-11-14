@@ -70,13 +70,17 @@ module.exports.login_post = (req: Request, res: Response) => {
       return res.status(400).json("Wrong email or password");
     }
 
-    const token = jwt.sign({ id: data[0].id }, process.env.SECRET_KEY || "super secret key");
+    const token = jwt.sign(
+      { id: data[0].id },
+      process.env.SECRET_KEY || "super secret key"
+    );
     const { password, ...other } = data[0];
 
     res.status(200).json({ ...other, token });
   });
 };
 
+// VERIFY EMAIL
 module.exports.verifyEmail_post = (req: Request, res: Response) => {
   const q1 = "SELECT * FROM Otp WHERE email = ?";
   db.query(q1, [req.body.email], (err1: any, data1: any) => {
@@ -93,6 +97,7 @@ module.exports.verifyEmail_post = (req: Request, res: Response) => {
   });
 };
 
+// CHECK IF EMAIL ALREADY EXISTS
 module.exports.emailAlreadyExists_post = (req: Request, res: Response) => {
   const q = "SELECT * FROM Users WHERE email = ?";
   db.query(q, [req.body.email], (err: any, data: any) => {
@@ -102,5 +107,37 @@ module.exports.emailAlreadyExists_post = (req: Request, res: Response) => {
         .status(200)
         .json({ exists: true, verified: data[0].verified === 1 });
     else return res.status(200).json({ exists: false, verified: false });
+  });
+};
+
+// PROFILE UPDATE
+module.exports.update_post = (req: any, res: Response) => {
+  console.log(req.user, req.body);
+  if (!req.body.id || !req.user || req.user.id !== req.body.id)
+    return res.status(403).json("You are not authorized!");
+
+  const q = "SELECT * FROM Users WHERE id = ?";
+  db.query(q, [req.body.id], (err: any, data: any) => {
+    if (err) return res.status(500).json(err);
+    if (data.length > 0) {
+      const diffObject = {
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password,
+      };
+      const notNullObject = Object.fromEntries(
+        Object.entries(diffObject).filter(([_, v]) => v != null)
+      );
+      const {id, gems, verified, progress, ...other} = data[0];
+      const toSet = { ...other, ...notNullObject };
+      console.log(toSet);
+      console.log([...Object.values(toSet), req.user.id]);
+      const q1 = "UPDATE Users SET username = ?, email = ?, password = ? WHERE id = ?";
+      db.query(q1, [...Object.values(toSet), req.user.id], (err1 : any, data1: any) => {
+        if (err1) return res.status(500).json(err1);
+        else return res.status(200).json(toSet);
+      })
+    }
+    else return res.status(500).json("User not found");
   });
 };
